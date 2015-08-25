@@ -180,6 +180,8 @@ def post_internal(resource, payl=None, skip_validation=False):
                 validation = True
             else:
                 validation = validator.validate(document)
+                # Apply coerced values
+                document = validator.document
             if validation:  # validation is successful
                 # Populate meta and default fields
                 document[config.LAST_UPDATED] = \

@@ -158,6 +158,8 @@ def patch_internal(resource, payload=None, concurrency_check=False,
         else:
             validation = validator.validate_update(updates, object_id,
                                                    original)
+            # Apply coerced values
+            updates = validator.document
         if validation:
             # sneak in a shadow copy if it wasn't already there
             late_versioning_catch(original, resource)

@@ -149,6 +149,8 @@ def put_internal(resource, payload=None, concurrency_check=False,
         else:
             validation = validator.validate_replace(document, object_id,
                                                     original)
+            # Apply coerced values
+            document = validator.document
         if validation:
             # sneak in a shadow copy if it wasn't already there
             late_versioning_catch(original, resource)
